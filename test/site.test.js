@@ -8,7 +8,12 @@ let page;
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
-        headless: true
+        headless: true,
+        args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage', // Useful for Docker
+  ]
     });
     page = await browser.newPage();
 
